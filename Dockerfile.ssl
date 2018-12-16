@@ -1,0 +1,6 @@
+FROM haproxy:1.7
+COPY haproxy.ssl.cfg /usr/local/etc/haproxy/haproxy.cfg
+COPY key.pem /etc/ssl/private/appgoto.pem
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
